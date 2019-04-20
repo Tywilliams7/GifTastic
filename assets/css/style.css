@@ -1,0 +1,15 @@
+button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+body {
+    background-image: url(../images/car.jpg);
+    background-size: cover;
+}
+img {
+    margin-left: 10px;
+    height: 200px;
+    width: 400px;
+}

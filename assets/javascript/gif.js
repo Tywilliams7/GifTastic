@@ -5,7 +5,7 @@
  function displayGifInfo() {
 
     var gif = $(this).attr("data-name");
-    var queryURL = ("http://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=wwVTTY5IMdcwxvC9v045wZ6CmPIkCli2&limit=10");
+    var queryURL = ("https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=wwVTTY5IMdcwxvC9v045wZ6CmPIkCli2&limit=10");
 
     // Creating an AJAX call for the specific gif button being clicked
     $.ajax({
@@ -34,31 +34,21 @@
         }
         }
 
-        
-
     )};
-
-
 
     $(document).on("click", ".gif",  function animate() {  
         var state = $(this).attr("dataState");
     
         if (state === "still") {
+            // Switch to animate
             $(this).attr("src", $(this).attr("dataAnimate"));
             $(this).attr("dataState", "animate");
-        }else {
-            $(this).attr("src", $(this).attr("dataAnimate"));
-            $(this).attr("dataState", "animate");
+          } else {
+            // Switch to still
+            $(this).attr("src", $(this).attr("dataStill"));
+            $(this).attr("dataState", "still");
           }
         });
-    
-    
-    
-    
-
-
-
-
 
 
  // Function for displaying gif data
@@ -75,7 +65,7 @@
       // This code $("<button>") is all jQuery needs to create the start and end tag. (<button></button>)
       var newButton = $("<button>");
       // Adding a class
-      newButton.addClass("gif");
+      newButton.addClass("gif-btn");
       // Adding a data-attribute with a value of the gif at index i
       newButton.attr("data-name", gifs[i]);
       // Providing the button's text with a value of the gif at index i
@@ -100,11 +90,7 @@
     renderButtons();
   });
  
- 
-
-
- 
-     $(document).on("click", ".gif", displayGifInfo);
+     $(document).on("click", ".gif-btn", displayGifInfo);
  // Calling the renderButtons function at least once to display the initial list of gifs
  renderButtons();
  // My Key wwVTTY5IMdcwxvC9v045wZ6CmPIkCli2
